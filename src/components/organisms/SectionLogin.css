@@ -1,0 +1,49 @@
+#login_section {
+    width: 30%;
+    height: 90%;
+    border: 2px #6fcd8a solid;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    background-color: #212121;
+    color: azure;
+}
+
+#sectionListaAlumnos {
+    width: 30%;
+    height: 90%;
+    border: 2px #6fcd8a solid;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.95);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-evenly;
+    align-items: center;
+    background-color: #212121;
+    color: azure;
+}
+
+#ul {
+    margin-bottom: 350px;
+    margin-right: 120px;
+}
+
+#login_title {
+    color: azure;
+    text-align: center;
+}
+
+#checkbox {
+    font-size: 32px;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+    width: 32px;
+    height: 20px;
+}
