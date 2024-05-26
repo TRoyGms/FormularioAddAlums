@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import { Node, LinkedList } from "../../data/LinkedList.js";
 import Swal from "sweetalert2";
 import Field from "../molecules/Field";
 import Button from "../atoms/Button";
+import SectionTable from "./SectionTable";
 import './SectionLogin.css';
 
 function SectionLogin() {
@@ -14,10 +15,15 @@ function SectionLogin() {
     const [grado, setGrado] = useState('');
     const [grupo, setGrupo] = useState('');
 
-    const linkedList = new LinkedList();
+    const [alumnosList, setAlumnosList] = useState(new LinkedList());
+
+    useEffect(() => {
+        console.log("Lista de alumnos actualizada:");
+        alumnosList.print();
+    }, [alumnosList]);
 
     const handlerClick = (event) => {
-        linkedList.insert({
+        const nuevoAlumno = {
             nombre,
             apellidos,
             numero,
@@ -25,30 +31,23 @@ function SectionLogin() {
             mujer,
             grado,
             grupo
-        });
+        };
 
-        let linkedListData = "";
-        let current = linkedList.head;
+        const updatedList = new LinkedList();
+        let current = alumnosList.head;
         while (current) {
-            linkedListData += `Nombre: ${current.data.nombre},\n 
-            Apellidos: ${current.data.apellidos}\n Numero de Lista: ${current.data.numero},\n 
-            Hombre: ${current.data.hombre ? 'Si' : 'No'},\n
-            Mujer: ${current.data.mujer ? 'Si' : 'No'},\n
-            Grado: ${current.data.grado} y Grupo: ${current.data.grupo}`
+            updatedList.insert(current.data);
             current = current.next;
         }
+        updatedList.insert(nuevoAlumno);
 
-        console.log("Informacion de la LinkedList:");
-        linkedList.print();
+        setAlumnosList(updatedList);
 
         Swal.fire({
             title: "Perfecto!",
             text: `El alumno ${nombre} ${apellidos} ha sido registrado correctamente.`,
             icon: "success",
             footer: '<h2>Powered by GitHub :D</h2>',
-            //imageUrl: "https://www.svgrepo.com/show/493719/react-javascript-js-framework-facebook.svg",
-            //imageHeight: 250,
-            //imageAlt: "React Image",
             confirmButtonColor: "#3085d6",
             confirmButtonText: "Entendido!"
           })
@@ -77,18 +76,7 @@ function SectionLogin() {
                 <Button title="Enviar Formulario" onclick={handlerClick}/> 
             </div>
 
-            {/*<div id="sectionListaAlumnos">*Este apartado aun no es funcional*
-                <h2>Lista de Alumnos Registrados</h2>
-                <div id="ul">
-                    <ul>
-                        <li>Pepe1</li>
-                        <li>Pepe2</li>
-                        <li>Pepe3</li>
-                        <li>Pepe4</li>
-                        <li>Pepe5</li>
-                    </ul>
-                </div>
-            </div>*/}
+            <SectionTable studentsList={alumnosList} />
         </>
     );
 }

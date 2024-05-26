@@ -12,6 +12,22 @@
     color: azure;
 }
 
+#section_table {
+    width: 40%;
+    height: 90%;
+    border: 2px #6fcd8a solid;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.95);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #212121;
+    color: azure;
+}
+
+
+
 #sectionListaAlumnos {
     width: 30%;
     height: 90%;

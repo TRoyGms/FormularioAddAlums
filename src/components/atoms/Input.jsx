@@ -9,7 +9,6 @@ const InputStyled = styled.input`
     color: #0308a3;
     padding: 0 10px;
 
-    /* Additional styles for checkbox to avoid height issues */
     ${(props) => props.type === 'checkbox' && `
         width: auto;
         height: auto;
